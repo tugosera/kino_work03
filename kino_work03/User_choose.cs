@@ -16,5 +16,17 @@ namespace kino_work03
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Hide();
+            User_buy_tickets User_buy_tickets = new User_buy_tickets();
+            User_buy_tickets.Show();
+        }
     }
 }

@@ -77,8 +77,10 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 39);
             this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
+            this.button1.Text = "login";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // button2
             // 
@@ -86,8 +88,10 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 31);
             this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
+            this.button2.Text = "Sign in";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_MouseClick);
             // 
             // Login
             // 
