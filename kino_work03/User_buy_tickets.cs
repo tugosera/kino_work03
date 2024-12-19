@@ -26,5 +26,27 @@ namespace kino_work03
         {
 
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            User_choose user_Choose = new User_choose();
+            user_Choose.Show();
+        }
     }
 }
