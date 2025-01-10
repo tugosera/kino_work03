@@ -20,66 +20,51 @@ using System.Windows.Forms;
                 InitializeComponent();
             }
 
-        int i = 0;
+        string path = @"C:\Users\opilane.TTHK\source\repos\kino_work03\kino_work03\images.txt";
+        int tt = 0;
+        List<string> pildid = new List<string> { };
         private void button1_Click(object sender, EventArgs e)
         {
-            // Подключение к базе данных
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True"; // Замените на вашу строку подключения
-            string query = "SELECT filmImg FROM film WHERE filmId = @id"; // Замените на название вашей таблицы
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
+            string query = "SELECT filmImg FROM film WHERE filmId = @id";
+
+            int someFilmId = 1; // Укажите ID фильма, который хотите загрузить
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-
-                    while (true) // Бесконечный цикл, из которого мы выйдем, если найдём запись
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        command.Parameters.AddWithValue("@id", someFilmId);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            command.Parameters.AddWithValue("@id", i);
-                            using (SqlDataReader reader = command.ExecuteReader())
+                            while (reader.Read())
                             {
-                                if (reader.Read()) // Проверяем, есть ли запись с текущим id
-                                {
-                                    string imageUrl = reader["filmImg"] as string;
-                                    if (!string.IsNullOrEmpty(imageUrl))
-                                    {
-                                        try
-                                        {
-                                            // Загрузка изображения из ссылки
-                                            using (WebClient webClient = new WebClient())
-                                            {
-                                                byte[] imageData = webClient.DownloadData(imageUrl);
-                                                using (MemoryStream ms = new MemoryStream(imageData))
-                                                {
-                                                    pictureBox1.Image = Image.FromStream(ms);
-                                                }
-                                            }
-                                        }
-                                        catch (Exception imgEx)
-                                        {
-                                            MessageBox.Show($"Ошибка загрузки изображения: {imgEx.Message}");
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Ссылка на изображение отсутствует.");
-                                        pictureBox1.Image = null; // Очистить PictureBox, если ссылки нет
-                                    }
-                                    break; // Если запись найдена, выходим из цикла
-                                }
-                                else
-                                {
-                                    i++; // Если записи нет, увеличиваем i
-                                }
+                                // Чтение значения столбца filmImg и добавление в список
+                                string imagePath = reader["filmImg"].ToString();
+                                pildid.Add(imagePath);
                             }
                         }
+                    }
+
+                    if (pildid.Count > 0)
+                    {
+                        string fail = pildid[tt];
+                        pictureBox1.Image = Image.FromFile(fail);
+                        tt++;
+                        if (tt == pildid.Count) { tt = 0; }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нет изображений для отображения.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка: {ex.Message}");
+                    MessageBox.Show("Произошла ошибка: " + ex.Message);
                 }
             }
         }
