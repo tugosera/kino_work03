@@ -22,13 +22,12 @@ using System.Windows.Forms;
 
         string path = @"C:\Users\opilane.TTHK\source\repos\kino_work03\kino_work03\images.txt";
         int tt = 0;
-        List<string> pildid = new List<string> { };
+        List<string> pildid = new List<string>();   
+
         private void button1_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
-            string query = "SELECT filmImg FROM film WHERE filmId = @id";
-
-            int someFilmId = 1; // Укажите ID фильма, который хотите загрузить
+            string query = "SELECT filmImg FROM film";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -37,13 +36,10 @@ using System.Windows.Forms;
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@id", someFilmId);
-
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                // Чтение значения столбца filmImg и добавление в список
                                 string imagePath = reader["filmImg"].ToString();
                                 pildid.Add(imagePath);
                             }
@@ -55,7 +51,11 @@ using System.Windows.Forms;
                         string fail = pildid[tt];
                         pictureBox1.Image = Image.FromFile(fail);
                         tt++;
-                        if (tt == pildid.Count) { tt = 0; }
+
+                        if (tt == pildid.Count)
+                        {
+                            tt = 0;
+                        }
                     }
                     else
                     {
