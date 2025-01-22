@@ -19,13 +19,15 @@ namespace kino_work03
         List<string> pildid = new List<string>();
         List<string> names = new List<string>();
         List<string> years = new List<string>();
+        List<int> filmIds = new List<int>();
 
         private void button1_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
-            string query = "SELECT filmImg FROM film"; // Предполагаем, что в базе данных хранится URL изображения
+            string query = "SELECT filmImg FROM film";
             string queryName = "SELECT filmName FROM film";
             string queryYear = "SELECT filmYear FROM film";
+            string queryId = "SELECT filmId FROM film";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -39,7 +41,7 @@ namespace kino_work03
                         {
                             while (reader.Read())
                             {
-                                string imageUrl = reader["filmImg"].ToString(); // Предполагаем, что filmImg это URL
+                                string imageUrl = reader["filmImg"].ToString();
                                 pildid.Add(imageUrl);
                             }
                         }
@@ -51,7 +53,7 @@ namespace kino_work03
                         {
                             while (reader.Read())
                             {
-                                string name = reader["filmName"].ToString(); // Предполагаем, что filmImg это URL
+                                string name = reader["filmName"].ToString();
                                 names.Add(name);
                             }
                         }
@@ -63,8 +65,20 @@ namespace kino_work03
                         {
                             while (reader.Read())
                             {
-                                string year = reader["filmYear"].ToString(); // Предполагаем, что filmImg это URL
+                                string year = reader["filmYear"].ToString();
                                 years.Add(year);
+                            }
+                        }
+                    }
+
+                    using (SqlCommand command = new SqlCommand(queryId, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                int id = reader.GetInt32(0);
+                                filmIds.Add(id);
                             }
                         }
                     }
@@ -125,8 +139,11 @@ namespace kino_work03
         private void button2_MouseClick(object sender, MouseEventArgs e)
         {
             this.Hide();
-            User_buy_tickets User_buy_tickets = new User_buy_tickets();
-            User_buy_tickets.Show();
+            var userBuyTickets = new User_buy_tickets
+            {
+                SelectedFilmId = filmIds[tt] // Передаем идентификатор выбранного фильма
+            };
+            userBuyTickets.Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

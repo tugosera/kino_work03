@@ -133,7 +133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="kot.jpeg" />
-    <Content Include="images.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
