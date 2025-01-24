@@ -16,48 +16,6 @@ namespace kino_work03
 
         public int SelectedFilmId { get; set; }
 
-        private void User_buy_tickets_Load(object sender, EventArgs e)
-        {
-            LoadSeats();
-        }
-
-        private void LoadSeats()
-        {
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
-            string query = "SELECT seatId, seatStatus FROM seat WHERE filmId = @FilmId";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@FilmId", SelectedFilmId);
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            int seatId = reader.GetInt32(0);
-                            int seatStatus = reader.GetInt32(1);
-
-                            Button seatButton = new Button
-                            {
-                                Text = seatId.ToString(),
-                                BackColor = seatStatus == 1 ? Color.Red : Color.Green,
-                                Location = new Point(300, 300),
-                                Tag = seatId,
-                                Width = 50,
-                                Height = 50,
-                                Margin = new Padding(5)
-                                
-                            };
-                            Controls.Add(seatButton);
-
-                            seatButton.Click += SeatButton_Click;
-                        }
-                    }
-                }
-            }
-        }
 
         public User_buy_tickets()
         {
@@ -98,6 +56,31 @@ namespace kino_work03
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

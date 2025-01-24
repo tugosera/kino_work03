@@ -135,9 +135,10 @@ namespace kino_work03
                 return null;
             }
         }
-
-        private void button2_MouseClick(object sender, MouseEventArgs e)
+        
+        void button2_MouseClick(object sender, MouseEventArgs e)
         {
+             
             this.Hide();
             var userBuyTickets = new User_buy_tickets
             {
