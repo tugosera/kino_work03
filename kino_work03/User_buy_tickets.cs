@@ -43,14 +43,16 @@ namespace kino_work03
                             {
                                 Text = seatId.ToString(),
                                 BackColor = seatStatus == 1 ? Color.Red : Color.Green,
+                                Location = new Point(300, 300),
                                 Tag = seatId,
                                 Width = 50,
                                 Height = 50,
                                 Margin = new Padding(5)
+                                
                             };
+                            Controls.Add(seatButton);
 
                             seatButton.Click += SeatButton_Click;
-                            flowLayoutPanel1.Controls.Add(seatButton); // Добавьте FlowLayoutPanel в форму
                         }
                     }
                 }
@@ -60,31 +62,6 @@ namespace kino_work03
         public User_buy_tickets()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button18_Click(object sender, EventArgs e)
