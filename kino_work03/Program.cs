@@ -20,8 +20,11 @@ namespace kino_work03
         }
     }
 }
-
+//Class
 //Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True
+
+//Home
+//Data Source=HOME\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True
 
 //database
 //create database kino;

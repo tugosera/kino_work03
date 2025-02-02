@@ -23,7 +23,7 @@ namespace kino_work03
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
+            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True";
             string query = "SELECT filmImg FROM film";
             string queryName = "SELECT filmName FROM film";
             string queryYear = "SELECT filmYear FROM film";
@@ -135,15 +135,12 @@ namespace kino_work03
                 return null;
             }
         }
-        
-        void button2_MouseClick(object sender, MouseEventArgs e)
+
+        private void button2_MouseClick(object sender, MouseEventArgs e)
         {
-             
             this.Hide();
-            var userBuyTickets = new User_buy_tickets
-            {
-                SelectedFilmId = filmIds[tt] // Передаем идентификатор выбранного фильма
-            };
+            string selectedFilmName = names[tt]; // Получаем название фильма
+            User_buy_tickets userBuyTickets = new User_buy_tickets(selectedFilmName); // Передаем в конструктор
             userBuyTickets.Show();
         }
 

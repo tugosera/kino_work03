@@ -57,6 +57,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>kinoDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="kinoDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kinoDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +122,17 @@
     </None>
     <None Include="kinoDataSet.xss">
       <DependentUpon>kinoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="kinoDataSet1.xsc">
+      <DependentUpon>kinoDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="kinoDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kinoDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kinoDataSet1.xss">
+      <DependentUpon>kinoDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

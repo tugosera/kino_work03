@@ -13,14 +13,20 @@ namespace kino_work03
 {
     public partial class User_buy_tickets : Form
     {
+        private string filmName; // Поле для хранения названия фильма
+        private Dictionary<string, bool> selectedSeats = new Dictionary<string, bool>();
 
-        public int SelectedFilmId { get; set; }
-
-
-        public User_buy_tickets()
+        // Конструктор, принимающий filmName
+        public User_buy_tickets(string filmName)
         {
             InitializeComponent();
+            this.filmName = filmName; // Инициализируем поле
         }
+
+
+
+
+
 
         private void button18_Click(object sender, EventArgs e)
         {
@@ -28,39 +34,10 @@ namespace kino_work03
             User_choose user_Choose = new User_choose();
             user_Choose.Show();
         }
-        private void SeatButton_Click(object sender, EventArgs e)
-        {
-            Button seatButton = sender as Button;
-            int seatId = (int)seatButton.Tag;
-
-            // Переключение статуса
-            bool isReserved = seatButton.BackColor == Color.Red;
-            seatButton.BackColor = isReserved ? Color.Green : Color.Red;
-
-            // Обновление в базе данных
-            UpdateSeatStatus(seatId, isReserved ? 0 : 1);
-        }
-
-        private void UpdateSeatStatus(int seatId, int status)
-        {
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
-            string query = "UPDATE seat SET seatStatus = @Status WHERE seatId = @SeatId";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Status", status);
-                    command.Parameters.AddWithValue("@SeatId", seatId);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
