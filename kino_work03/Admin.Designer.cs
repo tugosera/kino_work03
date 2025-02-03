@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.filmIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filmNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filmYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filmImgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filmBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kinoDataSet = new kino_work03.kinoDataSet();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,10 +40,21 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.filmTableAdapter = new kino_work03.kinoDataSetTableAdapters.filmTableAdapter();
+            this.kinoDataSet1 = new kino_work03.kinoDataSet1();
+            this.kinoDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.filmBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.filmTableAdapter1 = new kino_work03.kinoDataSet1TableAdapters.filmTableAdapter();
+            this.filmIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filmNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filmYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filmImgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kinoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinoDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinoDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filmBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -59,37 +66,13 @@
             this.filmNameDataGridViewTextBoxColumn,
             this.filmYearDataGridViewTextBoxColumn,
             this.filmImgDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.filmBindingSource;
+            this.dataGridView1.DataSource = this.filmBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(26, 114);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(424, 197);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // filmIdDataGridViewTextBoxColumn
-            // 
-            this.filmIdDataGridViewTextBoxColumn.DataPropertyName = "filmId";
-            this.filmIdDataGridViewTextBoxColumn.HeaderText = "filmId";
-            this.filmIdDataGridViewTextBoxColumn.Name = "filmIdDataGridViewTextBoxColumn";
-            this.filmIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // filmNameDataGridViewTextBoxColumn
-            // 
-            this.filmNameDataGridViewTextBoxColumn.DataPropertyName = "filmName";
-            this.filmNameDataGridViewTextBoxColumn.HeaderText = "filmName";
-            this.filmNameDataGridViewTextBoxColumn.Name = "filmNameDataGridViewTextBoxColumn";
-            // 
-            // filmYearDataGridViewTextBoxColumn
-            // 
-            this.filmYearDataGridViewTextBoxColumn.DataPropertyName = "filmYear";
-            this.filmYearDataGridViewTextBoxColumn.HeaderText = "filmYear";
-            this.filmYearDataGridViewTextBoxColumn.Name = "filmYearDataGridViewTextBoxColumn";
-            // 
-            // filmImgDataGridViewTextBoxColumn
-            // 
-            this.filmImgDataGridViewTextBoxColumn.DataPropertyName = "filmImg";
-            this.filmImgDataGridViewTextBoxColumn.HeaderText = "filmImg";
-            this.filmImgDataGridViewTextBoxColumn.Name = "filmImgDataGridViewTextBoxColumn";
             // 
             // filmBindingSource
             // 
@@ -107,8 +90,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 30);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -116,8 +100,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 30);
             this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
+            this.button2.Text = "Delete";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -125,8 +110,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(117, 30);
             this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
+            this.button3.Text = "Update";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
             // 
@@ -161,6 +147,50 @@
             // 
             this.filmTableAdapter.ClearBeforeFill = true;
             // 
+            // kinoDataSet1
+            // 
+            this.kinoDataSet1.DataSetName = "kinoDataSet1";
+            this.kinoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // kinoDataSet1BindingSource
+            // 
+            this.kinoDataSet1BindingSource.DataSource = this.kinoDataSet1;
+            this.kinoDataSet1BindingSource.Position = 0;
+            // 
+            // filmBindingSource1
+            // 
+            this.filmBindingSource1.DataMember = "film";
+            this.filmBindingSource1.DataSource = this.kinoDataSet1BindingSource;
+            // 
+            // filmTableAdapter1
+            // 
+            this.filmTableAdapter1.ClearBeforeFill = true;
+            // 
+            // filmIdDataGridViewTextBoxColumn
+            // 
+            this.filmIdDataGridViewTextBoxColumn.DataPropertyName = "filmId";
+            this.filmIdDataGridViewTextBoxColumn.HeaderText = "filmId";
+            this.filmIdDataGridViewTextBoxColumn.Name = "filmIdDataGridViewTextBoxColumn";
+            this.filmIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // filmNameDataGridViewTextBoxColumn
+            // 
+            this.filmNameDataGridViewTextBoxColumn.DataPropertyName = "filmName";
+            this.filmNameDataGridViewTextBoxColumn.HeaderText = "filmName";
+            this.filmNameDataGridViewTextBoxColumn.Name = "filmNameDataGridViewTextBoxColumn";
+            // 
+            // filmYearDataGridViewTextBoxColumn
+            // 
+            this.filmYearDataGridViewTextBoxColumn.DataPropertyName = "filmYear";
+            this.filmYearDataGridViewTextBoxColumn.HeaderText = "filmYear";
+            this.filmYearDataGridViewTextBoxColumn.Name = "filmYearDataGridViewTextBoxColumn";
+            // 
+            // filmImgDataGridViewTextBoxColumn
+            // 
+            this.filmImgDataGridViewTextBoxColumn.DataPropertyName = "filmImg";
+            this.filmImgDataGridViewTextBoxColumn.HeaderText = "filmImg";
+            this.filmImgDataGridViewTextBoxColumn.Name = "filmImgDataGridViewTextBoxColumn";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,6 +211,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.filmBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kinoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinoDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinoDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filmBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,6 +232,10 @@
         private kinoDataSet kinoDataSet;
         private System.Windows.Forms.BindingSource filmBindingSource;
         private kinoDataSetTableAdapters.filmTableAdapter filmTableAdapter;
+        private System.Windows.Forms.BindingSource kinoDataSet1BindingSource;
+        private kinoDataSet1 kinoDataSet1;
+        private System.Windows.Forms.BindingSource filmBindingSource1;
+        private kinoDataSet1TableAdapters.filmTableAdapter filmTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn filmIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn filmNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn filmYearDataGridViewTextBoxColumn;

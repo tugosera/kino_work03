@@ -139,7 +139,7 @@ namespace kino_work03
         private void button2_MouseClick(object sender, MouseEventArgs e)
         {
             this.Hide();
-            string selectedFilmName = names[tt]; // Получаем название фильма
+            string selectedFilmName = textBox1.Text; // Получаем название фильма
             User_buy_tickets userBuyTickets = new User_buy_tickets(selectedFilmName); // Передаем в конструктор
             userBuyTickets.Show();
         }

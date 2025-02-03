@@ -66,6 +66,7 @@
             this.button_buy.TabIndex = 16;
             this.button_buy.Text = "Buy";
             this.button_buy.UseVisualStyleBackColor = true;
+            this.button_buy.Click += new System.EventHandler(this.button_buy_Click_1);
             // 
             // button18
             // 
@@ -308,7 +309,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 27);
+            this.textBox1.Location = new System.Drawing.Point(166, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 20);
             this.textBox1.TabIndex = 43;
