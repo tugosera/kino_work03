@@ -23,7 +23,7 @@ namespace kino_work03
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
             string query = "SELECT filmImg FROM film";
             string queryName = "SELECT filmName FROM film";
             string queryYear = "SELECT filmYear FROM film";

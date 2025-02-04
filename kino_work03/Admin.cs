@@ -22,8 +22,6 @@ namespace kino_work03
 
         private void Admin_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'kinoDataSet1.film' table. You can move, or remove it, as needed.
-            this.filmTableAdapter1.Fill(this.kinoDataSet1.film);
 
         }
 
@@ -56,7 +54,7 @@ namespace kino_work03
             }
 
             // Строка подключения к базе данных
-            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
 
             // SQL-запрос для добавления записи
             string query = "INSERT INTO film (filmName, filmYear, filmImg) VALUES (@filmName, @filmYear, @filmImg)";
@@ -103,7 +101,7 @@ namespace kino_work03
         private void button3_Click(object sender, EventArgs e)
         {
             // Строка подключения к базе данных
-            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
 
             // SQL-запрос для получения данных из таблицы film
             string query = "SELECT filmName, filmYear, filmImg FROM film";
@@ -152,7 +150,7 @@ namespace kino_work03
             }
 
             // Строка подключения к базе данных
-            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True";
 
             // SQL-запрос для удаления записи
             string query = "DELETE FROM film WHERE filmName = @filmName";

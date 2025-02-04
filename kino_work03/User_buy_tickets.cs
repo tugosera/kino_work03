@@ -29,7 +29,7 @@ namespace kino_work03
         // Метод для загрузки данных о местах из базы данных
         private void LoadSeats()
         {
-            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True"; // Замените на вашу строку подключения
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True"; // Замените на вашу строку подключения
             string query = "SELECT seatName, seatStatus FROM Seat WHERE filmName = @filmName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -135,7 +135,7 @@ namespace kino_work03
         // Метод для обновления статуса мест в базе данных
         private void UpdateSeatsStatus()
         {
-            string connectionString = "Data Source=HOME\\SQLEXPRESS;Initial Catalog=kino;Integrated Security=True"; // Замените на вашу строку подключения
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=kino;Integrated Security=True"; // Замените на вашу строку подключения
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
